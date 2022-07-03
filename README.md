@@ -4,6 +4,6 @@ This GitHub repositiory consits of data science projects that demostrate some of
 
 Links:
 
-[Resume](Documents/kevin_morris_resume.docx)
+-[Resume](Documents/kevin_morris_resume.docx)
 
-[LinkedIn](https://www.linkedin.com/in/kevin-m-530572120/)
+-[LinkedIn](https://www.linkedin.com/in/kevin-m-530572120/)
