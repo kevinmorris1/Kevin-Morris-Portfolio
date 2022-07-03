@@ -1,2 +1,4 @@
-# Kevin Morris Portfolio
- A repositiory for preactice with Git and GitHub.
+# Kevin Morris Data Science Portfolio
+This GitHub repositiory consits of data science projects that demostrate some of my skills as a budding data scientist. Feel free to explore the prohject folders and review some of my work. 
+
+LinkedIn: [Kevin Morris LinkedIn](https://www.linkedin.com/in/kevin-m-530572120/)
