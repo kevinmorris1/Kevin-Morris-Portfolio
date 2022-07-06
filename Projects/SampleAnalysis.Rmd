@@ -1,0 +1,121 @@
+---
+title: "Sample Analysis"
+author: "Nermin Sinclair"
+date: "10/13/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r load library}
+library(readr) # readr is in tidyverse
+library(tidyverse)
+library(dbplyr)
+library(caret)
+library(glmnet)
+library(car)
+```
+
+```{r load file and define missing values}
+# define missing values
+na_values = c(" ", "NA", "Na", "na", "NaN")
+CrimeDataChicago <- read_csv('CrimeData2007_07.csv', na= na_values)
+# delete Total_CR
+Transactiondata <- read_csv('Transactionstocommunities.csv', na= na_values) # deleted columns from source
+```
+
+```{r delete missing values}
+# test for missing values
+any(is.na(CrimeDataChicago))
+any(is.na(Transactiondata))
+
+# delete missing values
+#CCrimeDataChicago <- na.omit(CrimeDataChicago)
+Transactiondata  <- na.omit(Transactiondata)
+any(is.na(Transactiondata))
+```
+
+```{r merge files}
+# NOTE this only works because we have sample data will not work with full dataset
+combinded = merge(x = Transactiondata, y = CrimeDataChicago, by.x ="COMMUNITY", by.y = "COMMUNITY")
+any(is.na(combinded))
+combinded = na.omit(combinded)
+```
+
+```{r delte columns with only one value, causes error in model}
+# Delete Date and Transactio column because it has only one value causes error
+combinded <- combinded[, -c(2,13)]
+combinded <- combinded[, -6] #buyer state
+combinded <- combinded[, -6] #buyer county
+```
+
+#### Prepare Cross-Validation and build train and test set
+```{r Cross Validation with 10 folds}
+fitControl <- trainControl(method = "cv", number= 10)
+```
+
+```{r create partition 85% training, 15% test WITH DATE}
+# Y variable is dosage unit 
+set.seed(2021)
+partition <- createDataPartition(combinded$DOSAGE_UNI, p=.85)$Resample1
+training_set<- combinded[partition,]
+test_set <- combinded[-partition,]
+```
+
+#### Fit Model for Model Selection
+```{r create/train glm poisson model}
+# Generalized Linear Model Poisson Regression for Count Data
+# Response Variable is a count
+model_Poisson <- train(DOSAGE_UNI~ .,data=training_set, method = "glm", trControl=fitControl, family="poisson")
+```
+
+```{r}
+model_Poisson
+# look at Coefficients
+model_Poisson$finalModel$coefficients
+```
+Look for similarities between the counties (to many counties have NA)
+
+```{r}
+combinded$COMMUNITY <- as.factor(combinded$COMMUNITY)
+combinded$REPORTER_B <- as.factor(combinded$REPORTER_B)
+combinded$REPORTER_S <- as.factor(combinded$REPORTER_S)
+combinded$BUYER_BUS_ <- as.factor(combinded$BUYER_BUS_)
+combinded$area_number <- as.factor(combinded$area_number)
+```
+
+plot(CovidDataCleaned_withDate)
+par(mfrow=c(2,2))
+plot(model_Poisson_withDate$finalModel) # doesn't look right!
+# Detecting multicollinearity with Variance Inflation Factor
+vif(model_Poisson_withDate$finalModel) # error message
+# Plot pair-wise correlation among the explanatory variables
+library(GGally)
+counties <- CovidDataCleaned_withDate[, 2:57]
+ggpairs(counties)                              #can't display graph
+# Ferrar - Glauber Test
+library(mctest)
+imcdiag(x= counties, y= CovidDataCleaned_withDate$numConfC19Hosp) #mode missing, when added, still error about x
+# partial correlation coefficient matrix 
+library(corpcor)
+cor2pcor(cov(counties))
+
+
+```{r create elastic net model}
+# Elastic net linear regression (lasso & ridge) to regularize regression model
+# Variable selection and regularization simultaneously
+model_ElasticNet <- train(DOSAGE_UNI~ ., data=training_set, method="glmnet", trControl=fitControl, family="poisson")
+model_ElasticNet
+coef(model_ElasticNet$finalModel, model_ElasticNet$bestTune$lambda)
+```
+
+```{r prediction on test set for validation}
+pred_Poisson <- predict(model_Poisson, newdata=test_set)
+pred_ElasticNet <- predict(model_ElasticNet, newdata = test_set)
+# RMSE Model Peformance
+data.frame(RMSE_Poisson = RMSE(pred_Poisson, test_set$DOSAGE_UNI), R2_Poisson= R2(pred_Poisson, test_set$DOSAGE_UNI),RMSE_EN = RMSE(pred_ElasticNet, test_set$DOSAGE_UNI), R2_EN= R2(pred_ElasticNet, test_set$DOSAGE_UNI))
+
+```
+
