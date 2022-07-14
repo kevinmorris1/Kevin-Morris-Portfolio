@@ -1,3 +1,3 @@
 # Baltimore City Crime Analysis
 
-This project is centered around crime data supplied by the City of Baltimore.
+This project folder is centered around the analysis of and vizualization techniques for crime data supplied by the City of Baltimore.
