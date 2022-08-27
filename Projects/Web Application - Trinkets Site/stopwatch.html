@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="site-header.js"></script>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="style_stopwatch.css">
+    <script src="scripts/site-header.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style_stopwatch.css">
 </head>
 <site-header></site-header>
 <body>
@@ -20,20 +20,7 @@
             <audio id="audio" src="sounds/Nonstop.mp3"></audio>
         </div>
     </div>
-    <script src="script_stopwatch.js"></script>
-    <script>
-        function play() {
-          var audio = document.getElementById("audio");
-          audio.play();
-        }
-        function pause() {
-          var audio = document.getElementById("audio");
-          audio.pause();
-        }
-        function reset() {
-          var audio = document.getElementById("audio");
-          audio.load();
-        }
-    </script>
+    <script src="scripts/script_stopwatch.js"></script>
+    <script src="scripts/script_music_play.js"></script>
 </body>
 </html>

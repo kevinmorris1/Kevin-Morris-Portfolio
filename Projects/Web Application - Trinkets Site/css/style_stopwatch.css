@@ -1,28 +1,22 @@
-:root{
-    --primary: crimson;
-    --white: white;
-    --darkdark: black;
-    --light: whitesmoke;
-}
-
 * {
     box-sizing: border-box;
     font-family: 'Fira sams', sans-serif;
 }
 
 body{
-    background-color: var(--white);
-    color: var(--light);
+    background-color: gray;
+    color: white;
 }
 
 .watch {
     text-align: center;
-    background-color: var(--darkdark);
+    background-color: black;
     width: 100%;
     max-width: 550px;
     margin: 4rem auto;
     padding: 1rem 2rem;
     border-radius: 1rem;
+    box-shadow: 0 0 25px 10px rgba(250, 249, 249, 0.8);
 }
 
 .time {
@@ -45,8 +39,8 @@ body{
     cursor: pointer;
     user-select: none;
 
-    background-color: var(--primary);
-    color: var(--light);
+    background-color: crimson;
+    color: white;
     margin: 0 .5rem;
     padding: .5rem 1rem;
     border-radius: .5rem;
@@ -59,5 +53,5 @@ button:hover {
 }
 
 button:active {
-    background-color: var(--white);
+    background-color: white;
 }

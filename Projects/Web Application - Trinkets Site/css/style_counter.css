@@ -1,23 +1,16 @@
-:root{
-    --primary: crimson;
-    --white: white;
-    --darkdark: black;
-    --light: whitesmoke;
-}
-
 * {
     box-sizing: border-box;
     font-family: 'Fira sams', sans-serif;
 }
 
 body{
-    background-color: var(--white);
-    color: var(--light);
+    background-color: white;
+    color: white;
 }
 
 .counter {
     text-align: center;
-    background-color: var(--darkdark);
+    background-color: black;
     width: 100%;
     max-width: 550px;
     margin: 4rem auto;
@@ -29,7 +22,7 @@ body{
     font-size: 3rem;
     font-weight: 300;
     margin-bottom: 1rem;
-    color: var(--light);
+    color: white;
     margin: 0;
 }
 
@@ -37,7 +30,7 @@ body{
     font-size: 5rem;
     font-weight: 300;
     margin-bottom: 1rem;
-    color: var(--light);
+    color: white;
 }
 
 .controls {
@@ -54,8 +47,8 @@ body{
     cursor: pointer;
     user-select: none;
 
-    background-color: var(--primary);
-    color: var(--light);
+    background-color: crimson;
+    color: white;
     margin: 0 .5rem;
     padding: .5rem 1rem;
     border-radius: .5rem;
