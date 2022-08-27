@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header>
+        <a href="home.html" class="logo">Trinket</a>
+        <ul>
+            <li><a href="clock.html">Clock</a></li>
+            <li><a href="timer.html">Timer</a></li>
+            <li><a href="counter.html">Counter</a></li>
+        </ul>
+    </header>
+
+    <div class="container">
+
+        <!-- INSERT CONTENT HERE -->
+        <div class="timer-container">
+            <div class="timer-time">00:00:00.00</div>
+            <div class="timer-controls">
+                <button class="btn btn-success" id="start" onclick="play()">Start</button>
+                <button class="btn btn-secondary" id="pause" onclick="pause()">Pause</button>
+                <button class="btn btn-danger" id="reset" onclick="reset()">Reset</button>
+                <audio id="audio" src="../sounds/Nonstop.mp3"></audio>
+            </div>
+        </div>
+        
+    
+    </div>
+
+    <!-- INSERT SCRIPTS HERE -->
+
+    <script src="../scripts/sticky_header.js"></script>
+    <script src="../scripts/timer.js"></script>
+    <script src="../scripts/music_controls.js"></script>
+</body>
+</html>

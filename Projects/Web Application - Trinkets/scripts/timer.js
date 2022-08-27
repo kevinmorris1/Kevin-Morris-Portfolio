@@ -1,4 +1,4 @@
-const time_el = document.querySelector('.watch .time');
+const time_el = document.querySelector('.timer-container .timer-time');
 const start_btn = document.getElementById('start');
 const pause_btn = document.getElementById('pause');
 const reset_btn = document.getElementById('reset');

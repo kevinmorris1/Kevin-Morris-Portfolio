@@ -1,6 +1,6 @@
 let num = 0;
 
-const value = document.querySelector(".value");
+const value = document.querySelector(".counter-value");
 const btns = document.querySelectorAll(".btn");
 
 btns.forEach((btn) => {
