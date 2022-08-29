@@ -1,20 +1,4 @@
-# Weather Application using React
-
-To run the application:
-- Open VSCode and initiate a Git Bash Terminal or open a Git Bash Terminal directly
-- Navigate to the destination that you want to clone the respository usinf the `cd` command
-- Clone this repository using `git clone ‘the code URL of the github repo’`
-- `cd /React - Weather/weather`
-- run `npm install` in the terminal
-- run `npm start` and the react app will open on your local host through `http://localhost:3000`
-
-This should enable you to open the Weather application where you can then seaqrch a city and obtain the current weather information for that location.
-
-Thanks to Tyler Potts for the guidance at https://www.youtube.com/watch?v=GuA0_Z1llYU&list=LL&index=1&t=1221s which was used for instruction and learning purposes.
-
-
-
-# Default Information for getting started with a React Application - Getting Started with Create React App
+# Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
