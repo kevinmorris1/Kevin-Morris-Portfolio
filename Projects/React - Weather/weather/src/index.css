@@ -1,0 +1,104 @@
+* {
+  margin: 0;
+  padding: 0%;
+  box-sizing: border-box;
+}
+
+body{
+  font-family: 'montserrat', sans-serif;
+}
+
+.app {
+  background-image: url('https://source.unsplash.com/1600x900?weather');
+  background-size: cover;
+  background-position: bottom;
+
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+  -webkit-animation: myfirst 5s;
+  animation: myfirst 5s;
+}
+
+@keyframes myfirst {
+  from {opacity: 0.2;}
+  to {opacity: 1;}
+}
+
+.app.warm {
+  background-image: url('https://source.unsplash.com/1600x900?weather,hot');
+}
+
+main {
+  min-height: 100vh;
+  background-image: linear-gradient(to bottom,  rgba(0,0,0,0.2), rgba(0,0,0,0.75));
+  padding: 25px;
+}
+
+.search-box {
+  width: 100%;
+  margin: 0 0 75px;
+}
+
+.search-box .search-bar {
+  display: block;
+  width: 100%;
+  padding: 15px;
+
+  appearance: none;
+  background: none;
+  border: none;
+  outline: none;
+
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 5px;
+  transition: 1s ease-out;
+}
+
+.search-box .search-bar:focus, .search-box .search-bar:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.location-box .location {
+  color: #fff;
+  font-size: 40px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.location-box .date {
+  color: #fff;
+  font-size: 30px;
+  font-weight: 300;
+  text-align: center;
+}
+
+.weather-box {
+  text-align: center;
+}
+
+.weather-box .temp {
+  position: relative;
+  display: inline-block;
+  margin: 30px auto;
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  
+  padding: 15px 25px;
+  font-size: 100px;
+  text-align: center;
+}
+
+.weather-box .weather {
+  position: relative;
+  display: inline-block;
+  margin: 30px auto;
+  color: #fff;
+  
+  padding: 15px 25px;
+  font-size: 50px;
+  text-align: center;
+}
